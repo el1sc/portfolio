@@ -261,6 +261,59 @@
       color: var(--muted);
     }
 
+    /* DISCORD INVITE */
+    .dc-invite {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 12px;
+      background: #1e1f22;
+      border-radius: 8px;
+      padding: 10px 12px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .dc-invite:hover { background: #2b2d31; }
+
+    .dc-invite-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #5865f2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    .dc-invite-info { flex: 1; }
+
+    .dc-invite-name {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .dc-invite-sub {
+      font-size: 0.65rem;
+      color: #949ba4;
+      margin-top: 1px;
+    }
+
+    .dc-invite-btn {
+      background: #5865f2;
+      color: #fff;
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 5px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
     /* SOCIAL ROW GRID */
     .social-row {
       flex-wrap: wrap;
@@ -439,6 +492,14 @@
         <span class="social-btn" data-tooltip="yeli.rl"><img src="https://cdn.simpleicons.org/epicgames" alt="Epic Games"></span>
         <span class="social-btn" data-tooltip="washed eli#börd"><img src="https://cdn.simpleicons.org/riotgames" alt="Riot Games"></span>
       </div>
+      <a href="https://discord.gg/PjjM9c4a2P" target="_blank" class="dc-invite">
+        <div class="dc-invite-icon"><i class="fab fa-discord"></i></div>
+        <div class="dc-invite-info">
+          <div class="dc-invite-name">My discord</div>
+        </div>
+        <div class="dc-invite-btn">Join</div>
+      </a>
+
       <div class="terminal">
         <div class="terminal-line">
           <span class="terminal-prompt">&gt;_</span>
