@@ -261,6 +261,23 @@
       color: var(--muted);
     }
 
+    /* SOCIAL ROW GRID */
+    .social-row {
+      flex-wrap: wrap;
+      row-gap: 8px;
+    }
+
+    .social-btn img {
+      width: 15px;
+      height: 15px;
+      filter: brightness(0) opacity(0.55);
+      transition: filter 0.2s;
+    }
+
+    .social-btn:hover img {
+      filter: brightness(0) invert(1);
+    }
+
     /* TERMINAL */
     .terminal {
       margin-top: 14px;
@@ -415,11 +432,21 @@
       </p>
       <div class="social-row">
         <a href="#" class="social-btn" data-tooltip="@yelii.rl"><i class="fab fa-discord"></i></a>
+        <a href="https://tiktok.com/@yeli.rl" target="_blank" class="social-btn" title="TikTok"><i class="fab fa-tiktok"></i></a>
+        <a href="https://twitch.tv/eli_7w" target="_blank" class="social-btn" title="Twitch"><i class="fab fa-twitch"></i></a>
+        <a href="https://www.instagram.com/eli.tn7" target="_blank" class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://open.spotify.com/user/31og33oxguj5cprr3feywfxh6gmq" target="_blank" class="social-btn" title="Spotify"><i class="fab fa-spotify"></i></a>
+        <span class="social-btn" data-tooltip="yeli.rl"><img src="https://cdn.simpleicons.org/epicgames" alt="Epic Games"></span>
+        <span class="social-btn" data-tooltip="washed eli#börd"><img src="https://cdn.simpleicons.org/riotgames" alt="Riot Games"></span>
       </div>
       <div class="terminal">
         <div class="terminal-line">
           <span class="terminal-prompt">&gt;_</span>
-          <span id="terminal-text">breach in progress...</span><span class="terminal-cursor" id="terminal-cursor"></span>
+          <span id="terminal-text">breach in progress...</span>
+        </div>
+        <div class="terminal-line" id="terminal-line2" style="display:none; margin-top:6px;">
+          <span class="terminal-prompt">&gt;_</span>
+          <span id="terminal-text2"></span><span class="terminal-cursor" id="terminal-cursor"></span>
         </div>
       </div>
     </div>
@@ -505,21 +532,24 @@
 <script>
 /* ── TERMINAL IP ── */
 (async () => {
-  const el = document.getElementById('terminal-text');
   await new Promise(r => setTimeout(r, 2800));
   try {
     const res  = await fetch('https://api.ipify.org?format=json');
     const data = await res.json();
     const ip   = data.ip;
-    el.textContent = '';
+    const line2 = document.getElementById('terminal-line2');
+    const el2   = document.getElementById('terminal-text2');
+    line2.style.display = 'flex';
     const full = `target acquired: ${ip}`;
     for (const ch of full) {
-      el.textContent += ch;
+      el2.textContent += ch;
       await new Promise(r => setTimeout(r, 38));
     }
     document.getElementById('terminal-cursor').style.display = 'none';
   } catch {
-    el.textContent = 'breach failed.';
+    const line2 = document.getElementById('terminal-line2');
+    line2.style.display = 'flex';
+    document.getElementById('terminal-text2').textContent = 'breach failed.';
   }
 })();
 
