@@ -261,6 +261,40 @@
       color: var(--muted);
     }
 
+    /* TERMINAL */
+    .terminal {
+      margin-top: 14px;
+      background: #0d0d0d;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.72rem;
+      color: #4ade80;
+      border: 1px solid #1a1a1a;
+    }
+
+    .terminal-line {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .terminal-prompt { color: #3b82f6; }
+    .terminal-cursor {
+      display: inline-block;
+      width: 7px;
+      height: 12px;
+      background: #4ade80;
+      animation: blink 0.9s step-end infinite;
+      vertical-align: middle;
+      margin-left: 2px;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+
     /* SOCIAL ICONS */
     .social-row {
       display: flex;
@@ -374,13 +408,19 @@
     <div class="tab-panel active" id="panel-about">
       <p class="section-label">About</p>
       <p class="about-text">
-        Hey! I'm Eli, a 17-year-old hobby developer who loves building things — from Discord bots and web frontends to Roblox games and game servers.
+        Hobby developer &amp; Rocket League enjoyer.
       </p>
       <p class="collab-note">
         Always looking for new challenges and opportunities to improve. Feel free to reach out if you're interested in collaborating!
       </p>
       <div class="social-row">
         <a href="#" class="social-btn" data-tooltip="@yelii.rl"><i class="fab fa-discord"></i></a>
+      </div>
+      <div class="terminal">
+        <div class="terminal-line">
+          <span class="terminal-prompt">&gt;_</span>
+          <span id="terminal-text">breach in progress...</span><span class="terminal-cursor" id="terminal-cursor"></span>
+        </div>
       </div>
     </div>
 
@@ -463,6 +503,26 @@
 </div><!-- /card -->
 
 <script>
+/* ── TERMINAL IP ── */
+(async () => {
+  const el = document.getElementById('terminal-text');
+  await new Promise(r => setTimeout(r, 2800));
+  try {
+    const res  = await fetch('https://api.ipify.org?format=json');
+    const data = await res.json();
+    const ip   = data.ip;
+    el.textContent = '';
+    const full = `target acquired: ${ip}`;
+    for (const ch of full) {
+      el.textContent += ch;
+      await new Promise(r => setTimeout(r, 38));
+    }
+    document.getElementById('terminal-cursor').style.display = 'none';
+  } catch {
+    el.textContent = 'breach failed.';
+  }
+})();
+
 /* ── TABS ── */
 document.querySelectorAll('.tab-btn').forEach(btn => {
   btn.addEventListener('click', () => {
