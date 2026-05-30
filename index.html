@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eli — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Raleway:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent:   #1e3a8a;
+      --orange:   #3b82f6;
+      --card-bg:  #ffffff;
+      --text:     #2a2a2a;
+      --muted:    #666;
+      --border:   #e8e8e8;
+    }
+
+    html, body {
+      width: 100%; height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      background: #0a0a0a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* ── FIRE CANVAS ── */
+    #fire {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* ── CARD ── */
+    .card {
+      position: relative;
+      z-index: 1;
+      width: 440px;
+      background: var(--card-bg);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 8px 48px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.06);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── CARD TOP (avatar + name) ── */
+    .card-top {
+      padding: 32px 28px 20px;
+      text-align: center;
+      background: #fff;
+    }
+
+    .avatar-wrap {
+      width: 90px;
+      height: 90px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      background: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow:
+        0 0 0 3px #fff,
+        0 0 20px 6px rgba(30, 58, 138, 0.45),
+        0 0 40px 12px rgba(59, 130, 246, 0.2);
+    }
+
+    .avatar-wrap img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .card-name {
+      font-family: 'Raleway', sans-serif;
+      font-style: normal;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 5px;
+      letter-spacing: 0.05em;
+    }
+
+    .card-role {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+
+    /* ── TAB CONTENT ── */
+    .card-body {
+      padding: 20px 28px;
+      background: #fff;
+      height: 360px;
+      overflow-y: auto;
+    }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ABOUT */
+    .section-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .about-text {
+      font-size: 0.875rem;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+
+    .collab-note {
+      margin-top: 14px;
+      font-size: 0.82rem;
+      line-height: 1.65;
+      color: #888;
+      border-left: 2px solid var(--orange);
+      padding-left: 10px;
+    }
+
+    /* SKILLS */
+    .skills-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .skill-item {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .skill-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      color: #fff;
+    }
+
+    .skill-icon.py  { background: linear-gradient(135deg, #3776ab, #ffd343); }
+    .skill-icon.cpp { background: linear-gradient(135deg, #00599c, #004c8c); }
+    .skill-icon.web { background: linear-gradient(135deg, #e34c26, #f0db4f); }
+    .skill-icon.lua { background: linear-gradient(135deg, #000080, #1a1a9a); }
+
+    .skill-info { flex: 1; }
+
+    .skill-name {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+
+    .skill-note {
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .skill-bar-wrap {
+      width: 52px;
+      height: 4px;
+      background: #eee;
+      border-radius: 2px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .skill-bar {
+      height: 100%;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--orange));
+    }
+
+    /* PROJECTS */
+    .projects-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .project-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 13px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--accent), var(--orange));
+    }
+
+    .project-card:hover { border-color: rgba(232,71,106,0.4); }
+
+    .project-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 5px;
+    }
+
+    .project-name {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .project-badge {
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+
+    .badge-active {
+      background: rgba(232,71,106,0.12);
+      color: var(--accent);
+    }
+
+    .badge-past {
+      background: #f0f0f0;
+      color: #888;
+    }
+
+    .project-desc {
+      font-size: 0.75rem;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    /* SOCIAL ICONS */
+    .social-row {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      padding: 12px 0 4px;
+    }
+
+    .social-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #f5f5f5;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #555;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s, transform 0.15s;
+      position: relative;
+    }
+
+    .social-btn:hover {
+      background: var(--accent);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .social-btn[data-tooltip]::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 500;
+      padding: 4px 8px;
+      border-radius: 5px;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .social-btn[data-tooltip]:hover::after {
+      opacity: 1;
+    }
+
+    /* ── TAB BAR ── */
+    .tab-bar {
+      display: flex;
+      border-top: 1px solid var(--border);
+      background: #fff;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 13px 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #aaa;
+      position: relative;
+      transition: color 0.2s;
+    }
+
+    .tab-btn::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 20%; right: 20%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--orange));
+      border-radius: 2px 2px 0 0;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .tab-btn.active { color: var(--accent); }
+    .tab-btn.active::after { opacity: 1; }
+  </style>
+</head>
+<body>
+
+<canvas id="fire"></canvas>
+
+<div class="card">
+
+  <!-- TOP -->
+  <div class="card-top">
+    <div class="avatar-wrap">
+      <img src="pfp.jpg" alt="Eli">
+    </div>
+    <h1 class="card-name">Eli</h1>
+    <p class="card-role">Hobby Developer</p>
+  </div>
+
+  <!-- BODY -->
+  <div class="card-body">
+
+    <!-- ABOUT -->
+    <div class="tab-panel active" id="panel-about">
+      <p class="section-label">About</p>
+      <p class="about-text">
+        Hey! I'm Eli, a 17-year-old hobby developer who loves building things — from Discord bots and web frontends to Roblox games and game servers.
+      </p>
+      <p class="collab-note">
+        Always looking for new challenges and opportunities to improve. Feel free to reach out if you're interested in collaborating!
+      </p>
+      <div class="social-row">
+        <a href="#" class="social-btn" data-tooltip="@yelii.rl"><i class="fab fa-discord"></i></a>
+      </div>
+    </div>
+
+    <!-- SKILLS -->
+    <div class="tab-panel" id="panel-skills">
+      <p class="section-label">Skills</p>
+      <ul class="skills-list">
+        <li class="skill-item">
+          <div class="skill-icon py">Py</div>
+          <div class="skill-info">
+            <div class="skill-name">Python</div>
+            <div class="skill-note">Focused on discord.py</div>
+          </div>
+          <div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div>
+        </li>
+        <li class="skill-item">
+          <div class="skill-icon cpp">C++</div>
+          <div class="skill-info">
+            <div class="skill-name">C++</div>
+            <div class="skill-note">Systems & game logic</div>
+          </div>
+          <div class="skill-bar-wrap"><div class="skill-bar" style="width:65%"></div></div>
+        </li>
+        <li class="skill-item">
+          <div class="skill-icon web">&lt;/&gt;</div>
+          <div class="skill-info">
+            <div class="skill-name">HTML / CSS / JS</div>
+            <div class="skill-note">Especially frontend</div>
+          </div>
+          <div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div>
+        </li>
+        <li class="skill-item">
+          <div class="skill-icon lua">Lua</div>
+          <div class="skill-info">
+            <div class="skill-name">Lua / Luau</div>
+            <div class="skill-note">Roblox scripting</div>
+          </div>
+          <div class="skill-bar-wrap"><div class="skill-bar" style="width:75%"></div></div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- PROJECTS -->
+    <div class="tab-panel" id="panel-projects">
+      <p class="section-label">Projects</p>
+      <div class="projects-list">
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-name">Roblox Tycoon</span>
+            <span class="project-badge badge-active">In Progress</span>
+          </div>
+          <p class="project-desc">An upcoming Roblox tycoon game built in Luau. It's gonna be an absolute banger — stay tuned!</p>
+        </div>
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-name">Cordify</span>
+            <span class="project-badge badge-past">Past</span>
+          </div>
+          <p class="project-desc">Years of experience building Discord bots with discord.py. Proficient in all the good stuff.</p>
+        </div>
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-name">Project Astral</span>
+            <span class="project-badge badge-past">Past</span>
+          </div>
+          <p class="project-desc">OGFN hosting & game server building — gained deep experience in server infrastructure.</p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /card-body -->
+
+  <!-- TAB BAR -->
+  <div class="tab-bar">
+    <button class="tab-btn active" data-tab="about">About</button>
+    <button class="tab-btn" data-tab="skills">Skills</button>
+    <button class="tab-btn" data-tab="projects">Projects</button>
+  </div>
+
+</div><!-- /card -->
+
+<script>
+/* ── TABS ── */
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+  });
+});
+
+/* ── FIRE PARTICLES ── */
+const canvas = document.getElementById('fire');
+const ctx    = canvas.getContext('2d');
+let W, H;
+
+function resize() {
+  W = canvas.width  = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+const COLORS = [
+  [ 30,  58, 138],
+  [ 37,  99, 235],
+  [ 59, 130, 246],
+  [ 15,  40, 110],
+  [ 96, 165, 250],
+  [ 67, 112, 200],
+];
+
+const COUNT = 180;
+const particles = [];
+
+function mkParticle(fresh) {
+  const color = COLORS[Math.floor(Math.random() * COLORS.length)];
+  return {
+    x:      Math.random() * (W || window.innerWidth),
+    y:      fresh ? (H || window.innerHeight) + Math.random() * 30
+                  : Math.random() * (H || window.innerHeight),
+    size:   Math.random() * 2.8 + 0.6,
+    vy:     Math.random() * 1.6 + 0.7,
+    vx:     (Math.random() - 0.5) * 0.4,
+    life:   fresh ? 0.8 + Math.random() * 0.2 : Math.random(),
+    decay:  Math.random() * 0.004 + 0.0018,
+    color,
+    sway:   Math.random() * 0.025 + 0.01,
+    phase:  Math.random() * Math.PI * 2,
+  };
+}
+
+for (let i = 0; i < COUNT; i++) particles.push(mkParticle(false));
+
+function draw() {
+  ctx.clearRect(0, 0, W, H);
+
+  for (const p of particles) {
+    p.y    -= p.vy;
+    p.x    += p.vx + Math.sin(p.y * p.sway + p.phase) * 0.35;
+    p.life -= p.decay;
+
+    if (p.life <= 0 || p.y < -12) Object.assign(p, mkParticle(true));
+
+    const [r, g, b] = p.color;
+    const alpha = Math.max(0, p.life);
+
+    ctx.save();
+    ctx.globalAlpha   = alpha;
+    ctx.shadowColor   = `rgba(${r},${g},${b},0.9)`;
+    ctx.shadowBlur    = p.size * 5;
+    ctx.fillStyle     = `rgb(${r},${g},${b})`;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  requestAnimationFrame(draw);
+}
+draw();
+</script>
+</body>
+</html>
