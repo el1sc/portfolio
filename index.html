@@ -316,8 +316,7 @@
 
     /* SOCIAL ROW GRID */
     .social-row {
-      flex-wrap: wrap;
-      row-gap: 8px;
+      flex-wrap: nowrap;
     }
 
     .social-btn img {
@@ -369,13 +368,15 @@
     .social-row {
       display: flex;
       justify-content: center;
-      gap: 16px;
+      align-items: center;
+      gap: 11px;
       padding: 12px 0 4px;
     }
 
     .social-btn {
       width: 34px;
       height: 34px;
+      flex-shrink: 0;
       border-radius: 50%;
       background: #f5f5f5;
       border: none;
@@ -484,6 +485,7 @@
         Always looking for new challenges and opportunities to improve. Feel free to reach out if you're interested in collaborating!
       </p>
       <div class="social-row">
+        <a href="https://github.com/el1sc" target="_blank" class="social-btn" title="GitHub"><i class="fab fa-github"></i></a>
         <a href="#" class="social-btn" data-tooltip="@yelii.rl"><i class="fab fa-discord"></i></a>
         <a href="https://tiktok.com/@yeli.rl" target="_blank" class="social-btn" title="TikTok"><i class="fab fa-tiktok"></i></a>
         <a href="https://twitch.tv/eli_7w" target="_blank" class="social-btn" title="Twitch"><i class="fab fa-twitch"></i></a>
