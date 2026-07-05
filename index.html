@@ -6,13 +6,13 @@
 <title>Eli — Developer</title>
 <meta name="description" content="Eli — 17yo developer going self-employed. Websites, Discord bots, Luau & more.">
 <meta name="theme-color" content="#05070d">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-/* ════════════════════════════════════ TOKENS ════════════════════════════════════ */
+/* ---- tokens ---- */
 :root {
   --bg:          #05070d;
   --bg-2:        #070b14;
@@ -59,7 +59,7 @@ a { color: inherit; }
 
 img { max-width: 100%; }
 
-/* ════════════════════════════════════ CURSOR ════════════════════════════════════ */
+/* ---- cursor ---- */
 @media (pointer: fine) {
   body.has-cursor, body.has-cursor a, body.has-cursor button { cursor: none; }
   .cursor-dot, .cursor-ring {
@@ -89,7 +89,7 @@ img { max-width: 100%; }
 .cursor-dot, .cursor-ring { display: none; }
 body.has-cursor .cursor-dot, body.has-cursor .cursor-ring { display: block; }
 
-/* ════════════════════════════════════ PRELOADER ════════════════════════════════════ */
+/* ---- preloader ---- */
 #preloader {
   position: fixed;
   inset: 0;
@@ -131,7 +131,7 @@ body.has-cursor .cursor-dot, body.has-cursor .cursor-ring { display: block; }
 }
 @keyframes bootBar { to { width: 100%; } }
 
-/* ════════════════════════════════════ BACKDROP ════════════════════════════════════ */
+/* ---- backdrop ---- */
 .aurora {
   position: fixed;
   inset: 0;
@@ -162,7 +162,7 @@ body.has-cursor .cursor-dot, body.has-cursor .cursor-ring { display: block; }
   to   { transform: translate(6vmax, 4vmax) scale(1.15); }
 }
 
-/* ════════════════════════════════════ NAV ════════════════════════════════════ */
+/* ---- nav ---- */
 #progress {
   position: fixed;
   top: 0; left: 0;
@@ -224,7 +224,7 @@ nav.scrolled {
 .nav-links a .n { color: var(--blue); margin-right: 4px; font-size: 0.68rem; }
 .nav-links a:hover, .nav-links a.active { color: var(--ink); }
 
-/* ════════════════════════════════════ HERO ════════════════════════════════════ */
+/* ---- hero ---- */
 #hero {
   position: relative;
   min-height: 100svh;
@@ -261,7 +261,7 @@ nav.scrolled {
   align-items: center;
 }
 
-/* ── code editor window ── */
+/* ---- code editor window ---- */
 .ed-rise {
   width: 100%;
   opacity: 0;
@@ -296,7 +296,7 @@ nav.scrolled {
   text-align: center;
   font-size: 0.7rem;
   color: var(--muted);
-  /* compensate the traffic lights so the title sits optically centered */
+  /* nudge the title left so it looks centered next to the traffic lights */
   margin-right: 52px;
 }
 .ed-tabs {
@@ -475,7 +475,7 @@ a.ed-tab:hover {
   border-color: rgba(76,194,232,0.5);
   background: var(--panel-2);
 }
-/* ════════════════════════════════════ SECTIONS ════════════════════════════════════ */
+/* ---- sections ---- */
 main { position: relative; z-index: 1; }
 section { padding: clamp(80px, 12vh, 140px) clamp(20px, 6vw, 72px); }
 .wrap { max-width: 1080px; margin: 0 auto; }
@@ -511,7 +511,7 @@ section { padding: clamp(80px, 12vh, 140px) clamp(20px, 6vw, 72px); }
 }
 [data-reveal].in { opacity: 1; transform: none; }
 
-/* ════════════════════════════════════ ABOUT ════════════════════════════════════ */
+/* ---- about ---- */
 .about-grid {
   display: grid;
   grid-template-columns: 300px 1fr;
@@ -641,7 +641,7 @@ section { padding: clamp(80px, 12vh, 140px) clamp(20px, 6vw, 72px); }
   animation: blink .9s step-end infinite;
 }
 
-/* ════════════════════════════════════ SKILLS ════════════════════════════════════ */
+/* ---- skills ---- */
 .skills-grid {
   display: grid;
   grid-template-columns: 1.05fr 1fr;
@@ -785,7 +785,7 @@ section { padding: clamp(80px, 12vh, 140px) clamp(20px, 6vw, 72px); }
 .mq-item:hover { color: var(--ink); }
 .mq-item i { color: var(--blue); font-size: 1rem; }
 
-/* ════════════════════════════════════ PROJECTS ════════════════════════════════════ */
+/* ---- projects ---- */
 .proj-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
@@ -888,7 +888,7 @@ section { padding: clamp(80px, 12vh, 140px) clamp(20px, 6vw, 72px); }
   justify-content: center;
 }
 
-/* ════════════════════════════════════ CONTACT ════════════════════════════════════ */
+/* ---- contact ---- */
 #contact { text-align: center; }
 .contact-big {
   font-family: var(--font-disp);
@@ -1002,7 +1002,7 @@ section { padding: clamp(80px, 12vh, 140px) clamp(20px, 6vw, 72px); }
 }
 .soc[data-tip]:hover::after { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-/* ════════════════════════════════════ FOOTER ════════════════════════════════════ */
+/* ---- footer ---- */
 footer {
   position: relative;
   z-index: 1;
@@ -1020,7 +1020,7 @@ footer {
 footer a { color: var(--ink-2); text-decoration: none; }
 footer a:hover { color: var(--cyan); }
 
-/* ════════════════════════════════════ RESPONSIVE ════════════════════════════════════ */
+/* ---- responsive ---- */
 @media (max-width: 900px) {
   .skills-grid { grid-template-columns: 1fr; }
   .about-grid { grid-template-columns: 1fr; }
@@ -1032,7 +1032,7 @@ footer a:hover { color: var(--cyan); }
   .stat b { font-size: 1.5rem; }
 }
 
-/* ════════════════════════════════════ REDUCED MOTION ════════════════════════════════════ */
+/* ---- reduced motion ---- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -1046,7 +1046,7 @@ footer a:hover { color: var(--cyan); }
 </head>
 <body>
 
-<!-- ══════════ PRELOADER ══════════ -->
+<!-- preloader -->
 <div id="preloader" aria-hidden="true">
   <div class="boot">
     <div class="boot-line"><span class="p">&gt;</span><span>init eli.dev …</span></div>
@@ -1066,7 +1066,7 @@ footer a:hover { color: var(--cyan); }
 
 <div id="progress" aria-hidden="true"></div>
 
-<!-- ══════════ NAV ══════════ -->
+<!-- nav -->
 <nav id="nav">
   <a class="logo" href="#hero">eli<span class="p">.dev</span><span class="c"></span></a>
   <ul class="nav-links">
@@ -1077,7 +1077,7 @@ footer a:hover { color: var(--cyan); }
   </ul>
 </nav>
 
-<!-- ══════════ HERO ══════════ -->
+<!-- hero -->
 <header id="hero">
   <canvas id="scene" aria-hidden="true"></canvas>
   <h1 class="sr-only">Eli — 17yo developer</h1>
@@ -1124,7 +1124,7 @@ footer a:hover { color: var(--cyan); }
 
 <main>
 
-<!-- ══════════ ABOUT ══════════ -->
+<!-- about -->
 <section id="about">
   <div class="wrap">
     <div class="sec-head" data-reveal>
@@ -1171,7 +1171,7 @@ footer a:hover { color: var(--cyan); }
   </div>
 </section>
 
-<!-- ══════════ SKILLS ══════════ -->
+<!-- skills -->
 <section id="skills">
   <div class="wrap">
     <div class="sec-head" data-reveal>
@@ -1257,7 +1257,7 @@ footer a:hover { color: var(--cyan); }
   </div>
 </section>
 
-<!-- ══════════ PROJECTS ══════════ -->
+<!-- projects -->
 <section id="projects">
   <div class="wrap">
     <div class="sec-head" data-reveal>
@@ -1330,7 +1330,7 @@ footer a:hover { color: var(--cyan); }
   </div>
 </section>
 
-<!-- ══════════ CONTACT ══════════ -->
+<!-- contact -->
 <section id="contact">
   <div class="wrap">
     <p class="sec-tag" data-reveal>04 // ping me</p>
@@ -1363,7 +1363,7 @@ footer a:hover { color: var(--cyan); }
 
 </main>
 
-<!-- ══════════ FOOTER ══════════ -->
+<!-- footer -->
 <footer>
   <span>© <span id="year"></span> eli — designed &amp; built from scratch</span>
   <a href="#hero">back to top ↑</a>
@@ -1373,13 +1373,13 @@ footer a:hover { color: var(--cyan); }
 'use strict';
 const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* ══════════════════ PRELOADER ══════════════════ */
+/* ---- preloader ---- */
 window.addEventListener('load', () => {
   const pl = document.getElementById('preloader');
   setTimeout(() => pl.classList.add('done'), REDUCED ? 50 : 1350);
 });
 
-/* ══════════════════ CUSTOM CURSOR ══════════════════ */
+/* ---- custom cursor ---- */
 (() => {
   if (REDUCED || !window.matchMedia('(pointer: fine)').matches) return;
   document.body.classList.add('has-cursor');
@@ -1405,7 +1405,7 @@ window.addEventListener('load', () => {
   });
 })();
 
-/* ══════════════════ HERO BACKDROP (stars + wireframe icosahedron) ══════════════════ */
+/* ---- hero backdrop (stars + wireframe icosahedron) ---- */
 (() => {
   const hero   = document.getElementById('hero');
   const canvas = document.getElementById('scene');
@@ -1442,7 +1442,7 @@ window.addEventListener('load', () => {
     tmy = (e.clientY / innerHeight - 0.5) * 2;
   });
 
-  /* icosahedron geometry */
+  /* icosahedron verts + edges */
   const PHI = (1 + Math.sqrt(5)) / 2;
   const raw = [
     [-1,PHI,0],[1,PHI,0],[-1,-PHI,0],[1,-PHI,0],
@@ -1508,7 +1508,7 @@ window.addEventListener('load', () => {
       ctx.fillRect(s.x + smx * 8 * s.r, s.y + smy * 8 * s.r, s.r, s.r);
     }
 
-    /* two wireframes framing the editor on wide screens */
+    /* two wireframes left and right of the editor, only on big screens */
     if (W > 1150) {
       const sc = Math.min(W, H) * 0.15;
       drawIco(W * 0.885, H * 0.32, sc,        t * 0.7 + smy * 0.3,  t + smx * 0.4,        1);
@@ -1531,7 +1531,7 @@ window.addEventListener('load', () => {
   }
 })();
 
-/* ══════════════════ LIVE-TYPED eli.config.ts ══════════════════ */
+/* ---- live-typed eli.config.ts ---- */
 (() => {
   const codeBox = document.getElementById('edCode');
   const map     = document.getElementById('edMap');
@@ -1543,12 +1543,10 @@ window.addEventListener('load', () => {
     [['k','const'],['u',' '],['v','eli'],['u',' = {']],
     [['u','  '],['p','name'],['u',': '],['s','"Eli"'],['u',',']],
     [['u','  '],['p','age'],['u',': '],['n','17'],['u',',']],
-    [['u','  '],['p','role'],['u',': '],['s','"developer — going self-employed"'],['u',',']],
-    [['u','  '],['p','goals'],['u',': '],['s','"big."'],['u',',']],
+    [['u','  '],['p','role'],['u',': '],['s','"hobby developer"'],['u',',']],
     [['u','  '],['p','stack'],['u',': ['],['s','"python"'],['u',', '],['s','"js"'],['u',', '],['s','"html"'],['u',', '],['s','"css"'],['u',', '],['s','"c++"'],['u',', '],['s','"luau"'],['u','],']],
-    [['u','  '],['p','passion'],['u',': '],['s','"video games"'],['u',',']],
-    [['u','  '],['p','currently'],['u',': '],['s','"building a roblox tycoon"'],['u',',']],
-    [['u','  '],['p','dms'],['u',': '],['s','"open — hit me up"'],['u',',']],
+    [['u','  '],['p','passion'],['u',': '],['s','"building new things"'],['u',',']],
+    [['u','  '],['p','currently'],['u',': '],['s','"working on a roblox tycoon"'],['u',',']],
     [['u','} '],['k','as'],['u',' '],['t','const'],['u',';']],
     [],
     [['k','export'],['u',' '],['k','default'],['u',' '],['v','eli'],['u',';']],
@@ -1580,7 +1578,7 @@ window.addEventListener('load', () => {
     map.appendChild(bar);
   }
 
-  /* instant render for reduced motion */
+  /* reduced motion: skip the typing, just show everything at once */
   if (REDUCED) {
     LINES.forEach((toks, i) => {
       newLine(i);
@@ -1592,13 +1590,13 @@ window.addEventListener('load', () => {
       }
       mapBar(toks);
     });
-    pos.textContent = 'Ln 14, Col 20';
+    pos.textContent = 'Ln 12, Col 20';
     return;
   }
 
   let li = 0, ti = 0, ci = 0, col = 1, span = null;
   function step() {
-    if (li >= LINES.length) return;              // done — caret keeps blinking
+    if (li >= LINES.length) return;              // done typing, caret just keeps blinking
     const toks = LINES[li];
     let wait;
     if (ti < toks.length) {
@@ -1621,14 +1619,14 @@ window.addEventListener('load', () => {
     pos.textContent = `Ln ${Math.min(li + 1, LINES.length)}, Col ${col}`;
     setTimeout(step, wait);
   }
-  /* keep original token lists for the minimap before shift() eats them */
+  /* copy each line first, the typing loop shift()s them away */
   LINES.forEach(l => { l.orig = l.map(t => [...t]); });
 
   newLine(0);
   setTimeout(step, 1700);
 })();
 
-/* ══════════════════ EDITOR TILT ══════════════════ */
+/* ---- editor tilt ---- */
 (() => {
   if (REDUCED || !window.matchMedia('(pointer: fine)').matches) return;
   const hero = document.getElementById('hero');
@@ -1646,7 +1644,7 @@ window.addEventListener('load', () => {
   hero.addEventListener('mouseleave', () => { ed.style.transform = ''; });
 })();
 
-/* ══════════════════ STATUS-BAR CLOCK ══════════════════ */
+/* ---- status-bar clock ---- */
 (() => {
   const el = document.getElementById('clock');
   const tick = () => el.textContent = new Date().toLocaleTimeString('en-GB');
@@ -1654,7 +1652,7 @@ window.addEventListener('load', () => {
   setInterval(tick, 1000);
 })();
 
-/* ══════════════════ NAV / PROGRESS / ACTIVE LINK ══════════════════ */
+/* ---- nav / progress / active link ---- */
 (() => {
   const nav = document.getElementById('nav');
   const bar = document.getElementById('progress');
@@ -1677,7 +1675,7 @@ window.addEventListener('load', () => {
   });
 })();
 
-/* ══════════════════ SCROLL REVEAL ══════════════════ */
+/* ---- scroll reveal ---- */
 (() => {
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
@@ -1687,7 +1685,7 @@ window.addEventListener('load', () => {
   document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
 })();
 
-/* ══════════════════ COUNT-UP STATS ══════════════════ */
+/* ---- count-up stats ---- */
 (() => {
   const ease = x => 1 - Math.pow(1 - x, 3);
   const io = new IntersectionObserver(entries => {
@@ -1709,7 +1707,7 @@ window.addEventListener('load', () => {
   document.querySelectorAll('[data-count]').forEach(el => io.observe(el));
 })();
 
-/* ══════════════════ RADAR CHART ══════════════════ */
+/* ---- radar chart ---- */
 (() => {
   const DATA = [
     { label: 'Python',    value: 85 },
@@ -1758,14 +1756,14 @@ window.addEventListener('load', () => {
     svg.appendChild(t);
   });
 
-  /* value blob (animated from 0) */
+  /* the data shape itself, grows out of the center */
   const blob = el('polygon', { class: 'blob', points: Array.from({ length: N }, (_, i) => pt(i, 0).join(',')).join(' ') });
   svg.appendChild(blob);
 
   const vertices = DATA.map((d, i) => {
     const c = el('circle', { class: 'vertex', r: 4.5, cx: CX, cy: CY });
     svg.appendChild(c);
-    /* bigger invisible hit target */
+    /* invisible fat circle so you dont have to hit the tiny dot */
     const hit = el('circle', { class: 'vertex-hit', r: 16, cx: pt(i, d.value)[0], cy: pt(i, d.value)[1] });
     hit.addEventListener('mouseenter', () => {
       const [x, y] = pt(i, d.value);
@@ -1805,7 +1803,7 @@ window.addEventListener('load', () => {
   io.observe(svg);
 })();
 
-/* ══════════════════ PROGRESS RINGS ══════════════════ */
+/* ---- progress rings ---- */
 (() => {
   const CIRC = 2 * Math.PI * 48;
   const ease = x => 1 - Math.pow(1 - x, 3);
@@ -1831,13 +1829,13 @@ window.addEventListener('load', () => {
   });
 })();
 
-/* ══════════════════ MARQUEE (duplicate track for seamless loop) ══════════════════ */
+/* ---- marquee (duplicate track for seamless loop) ---- */
 (() => {
   const track = document.getElementById('mqTrack');
   track.innerHTML += track.innerHTML;
 })();
 
-/* ══════════════════ 3D TILT CARDS ══════════════════ */
+/* ---- 3d tilt cards ---- */
 (() => {
   if (REDUCED || !window.matchMedia('(pointer: fine)').matches) return;
   document.querySelectorAll('[data-tilt]').forEach(card => {
@@ -1863,7 +1861,7 @@ window.addEventListener('load', () => {
   });
 })();
 
-/* ══════════════════ MAGNETIC BUTTONS ══════════════════ */
+/* ---- magnetic buttons ---- */
 (() => {
   if (REDUCED || !window.matchMedia('(pointer: fine)').matches) return;
   document.querySelectorAll('[data-magnet]').forEach(btn => {
@@ -1881,7 +1879,7 @@ window.addEventListener('load', () => {
   });
 })();
 
-/* ══════════════════ TERMINAL IP EASTER EGG ══════════════════ */
+/* ---- terminal ip easter egg ---- */
 (async () => {
   await new Promise(r => setTimeout(r, 3200));
   const line2 = document.getElementById('termLine2');
@@ -1902,7 +1900,7 @@ window.addEventListener('load', () => {
   }
 })();
 
-/* ══════════════════ MISC ══════════════════ */
+/* ---- misc ---- */
 document.getElementById('year').textContent = new Date().getFullYear();
 
 console.log(
