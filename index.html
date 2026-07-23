@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eli — Developer</title>
-<meta name="description" content="Eli — 17yo developer going self-employed. Websites, Discord bots, Luau & more.">
-<meta name="theme-color" content="#05070d">
+<title>Eli — Developer & Security</title>
+<meta name="description" content="Eli — 17yo developer going self-employed. Websites, Discord bots, Luau, and cybersecurity. #nullsec">
+<meta name="theme-color" content="#000000">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,8 +14,8 @@
 <style>
 /* ---- tokens ---- */
 :root {
-  --bg:          #05070d;
-  --bg-2:        #070b14;
+  --bg:          #000000;
+  --bg-2:        #0a0a0b;
   --panel:       rgba(255,255,255,0.03);
   --panel-2:     rgba(255,255,255,0.05);
   --border:      rgba(255,255,255,0.08);
@@ -23,10 +23,12 @@
   --ink:         #f2f4f8;
   --ink-2:       #b8bfcc;
   --muted:       #6b7280;
-  --blue:        #3987e5;
-  --violet:      #9085e9;
-  --cyan:        #4cc2e8;
+  --blue:        #d4d4d8;
+  --violet:      #a1a1aa;
+  --cyan:        #ffffff;
   --grad:        linear-gradient(100deg, var(--blue), var(--violet) 55%, var(--cyan));
+  --acc:         #34d399;
+  --acc-dim:     rgba(52,211,153,0.14);
   --grid-line:   rgba(255,255,255,0.07);
   --font-body:   'Inter', system-ui, sans-serif;
   --font-disp:   'Space Grotesk', system-ui, sans-serif;
@@ -48,12 +50,12 @@ body {
   overflow-x: hidden;
 }
 
-::selection { background: rgba(57,135,229,0.35); color: #fff; }
+::selection { background: rgba(212,212,216,0.35); color: #fff; }
 
 ::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: #1b2333; border-radius: 5px; border: 2px solid var(--bg); }
-::-webkit-scrollbar-thumb:hover { background: #2a344a; }
+::-webkit-scrollbar-thumb { background: #27272a; border-radius: 5px; border: 2px solid var(--bg); }
+::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
 
 a { color: inherit; }
 
@@ -73,17 +75,17 @@ img { max-width: 100%; }
   .cursor-dot {
     width: 6px; height: 6px;
     background: var(--cyan);
-    box-shadow: 0 0 10px rgba(76,194,232,0.8);
+    box-shadow: 0 0 10px rgba(255,255,255,0.8);
   }
   .cursor-ring {
     width: 34px; height: 34px;
-    border: 1.5px solid rgba(144,133,233,0.55);
+    border: 1.5px solid rgba(161,161,170,0.55);
     transition: width .25s ease, height .25s ease, border-color .25s ease, background .25s ease;
   }
   .cursor-ring.is-hover {
     width: 56px; height: 56px;
-    border-color: rgba(76,194,232,0.9);
-    background: rgba(76,194,232,0.08);
+    border-color: rgba(255,255,255,0.9);
+    background: rgba(255,255,255,0.08);
   }
 }
 .cursor-dot, .cursor-ring { display: none; }
@@ -149,11 +151,11 @@ body.has-cursor .cursor-dot, body.has-cursor .cursor-ring { display: block; }
   animation: drift 26s ease-in-out infinite alternate;
 }
 .aurora::before {
-  background: radial-gradient(circle, #1c5cab, transparent 65%);
+  background: radial-gradient(circle, #2a2a2a, transparent 65%);
   top: -20vmax; left: -12vmax;
 }
 .aurora::after {
-  background: radial-gradient(circle, #4a3aa7, transparent 65%);
+  background: radial-gradient(circle, #2a2a2a, transparent 65%);
   bottom: -22vmax; right: -14vmax;
   animation-delay: -13s;
 }
@@ -269,11 +271,11 @@ nav.scrolled {
 }
 .editor {
   width: 100%;
-  background: #0c111c;
+  background: #101013;
   border: 1px solid var(--border-2);
   border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 40px 100px -30px rgba(0,0,0,0.85), 0 0 80px -40px rgba(57,135,229,0.35);
+  box-shadow: 0 40px 100px -30px rgba(0,0,0,0.85), 0 0 80px -40px rgba(212,212,216,0.35);
   font-family: var(--font-mono);
   font-size: 0.83rem;
   transition: transform .15s ease-out;
@@ -327,7 +329,7 @@ nav.scrolled {
 .ic-sh  { color: #89e051; }
 .ed-tab.active {
   color: var(--ink);
-  background: #0c111c;
+  background: #101013;
   box-shadow: inset 0 2px 0 var(--blue);
 }
 a.ed-tab:hover {
@@ -403,7 +405,7 @@ a.ed-tab:hover {
   padding: 7px 14px;
   font-size: 0.66rem;
   color: var(--ink-2);
-  background: rgba(57,135,229,0.12);
+  background: rgba(212,212,216,0.12);
   border-top: 1px solid var(--border);
 }
 .ed-status i { margin-right: 5px; color: var(--cyan); }
@@ -459,11 +461,11 @@ a.ed-tab:hover {
 }
 .btn-solid {
   background: var(--grad);
-  color: #04060b;
+  color: #050506;
 }
 .btn-solid:hover {
   transform: translateY(-3px);
-  box-shadow: 0 14px 40px -10px rgba(57,135,229,0.55);
+  box-shadow: 0 14px 40px -10px rgba(212,212,216,0.55);
 }
 .btn-ghost {
   border-color: var(--border-2);
@@ -472,7 +474,7 @@ a.ed-tab:hover {
 }
 .btn-ghost:hover {
   transform: translateY(-3px);
-  border-color: rgba(76,194,232,0.5);
+  border-color: rgba(255,255,255,0.5);
   background: var(--panel-2);
 }
 /* ---- sections ---- */
@@ -564,9 +566,25 @@ section { padding: clamp(80px, 12vh, 140px) clamp(20px, 6vw, 72px); }
   background: var(--cyan);
   box-shadow: 0 0 14px var(--cyan);
 }
-.about-text p { color: var(--ink-2); font-size: 1.02rem; max-width: 58ch; }
+.about-text p { color: var(--ink-2); font-size: 1.02rem; max-width: 54ch; }
 .about-text p + p { margin-top: 14px; }
 .about-text .hl { color: var(--ink); font-weight: 500; }
+.about-lead {
+  font-family: var(--font-disp);
+  font-size: clamp(1.5rem, 3vw, 2.1rem) !important;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--ink) !important;
+  max-width: 20ch !important;
+  margin-bottom: 16px;
+}
+.about-lead .hl {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 
 .stat-row {
   display: grid;
@@ -582,7 +600,7 @@ section { padding: clamp(80px, 12vh, 140px) clamp(20px, 6vw, 72px); }
   text-align: center;
   transition: border-color .3s, transform .3s;
 }
-.stat:hover { border-color: rgba(57,135,229,0.4); transform: translateY(-4px); }
+.stat:hover { border-color: rgba(212,212,216,0.4); transform: translateY(-4px); }
 .stat b {
   display: block;
   font-family: var(--font-disp);
@@ -603,7 +621,7 @@ section { padding: clamp(80px, 12vh, 140px) clamp(20px, 6vw, 72px); }
 /* terminal */
 .terminal {
   margin-top: 32px;
-  background: #04060b;
+  background: #050506;
   border: 1px solid var(--border);
   border-radius: 14px;
   overflow: hidden;
@@ -681,7 +699,7 @@ section { padding: clamp(80px, 12vh, 140px) clamp(20px, 6vw, 72px); }
   fill: var(--muted);
 }
 #radar .blob {
-  fill: rgba(57,135,229,0.16);
+  fill: rgba(212,212,216,0.16);
   stroke: var(--blue);
   stroke-width: 2;
   stroke-linejoin: round;
@@ -696,7 +714,7 @@ section { padding: clamp(80px, 12vh, 140px) clamp(20px, 6vw, 72px); }
 .chart-tip {
   position: absolute;
   pointer-events: none;
-  background: #0c1220;
+  background: #111114;
   border: 1px solid var(--border-2);
   border-radius: 9px;
   padding: 7px 11px;
@@ -729,7 +747,7 @@ section { padding: clamp(80px, 12vh, 140px) clamp(20px, 6vw, 72px); }
   gap: 10px;
   transition: border-color .3s, transform .3s;
 }
-.ring-card:hover { border-color: rgba(144,133,233,0.45); transform: translateY(-4px); }
+.ring-card:hover { border-color: rgba(161,161,170,0.45); transform: translateY(-4px); }
 .ring-wrap { position: relative; width: 110px; height: 110px; }
 .ring-wrap svg { transform: rotate(-90deg); }
 .ring-track { fill: none; stroke: rgba(255,255,255,0.07); stroke-width: 8; }
@@ -753,6 +771,53 @@ section { padding: clamp(80px, 12vh, 140px) clamp(20px, 6vw, 72px); }
 .ring-num small { font-size: 0.72rem; color: var(--muted); font-weight: 400; margin-left: 1px; }
 .ring-label { font-weight: 600; font-size: 0.88rem; font-family: var(--font-disp); }
 .ring-note { font-size: 0.7rem; color: var(--muted); margin-top: -6px; text-align: center; }
+
+/* projects drawer (collapsible) */
+.proj-drawer {
+  margin-top: clamp(24px, 4vh, 40px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--panel);
+  overflow: hidden;
+}
+.drawer-head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--ink);
+  transition: background .2s;
+}
+.drawer-head:hover { background: rgba(255,255,255,0.02); }
+.dh-left { display: flex; align-items: center; gap: 11px; }
+.dh-left i { color: var(--ink-2); font-size: 0.9rem; }
+.dh-left .pr { color: var(--muted); }
+.dh-count {
+  color: var(--muted);
+  font-size: 0.72rem;
+  border: 1px solid var(--border-2);
+  padding: 1px 9px;
+  border-radius: 20px;
+}
+.dh-chevron { color: var(--muted); transition: transform .35s cubic-bezier(.22,1,.36,1); }
+.drawer-head[aria-expanded="true"] .dh-chevron { transform: rotate(180deg); }
+.drawer-head[aria-expanded="true"] { border-bottom: 1px solid var(--border); }
+.drawer-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .5s cubic-bezier(.22,1,.36,1);
+}
+.drawer-panel.open { grid-template-rows: 1fr; }
+.drawer-clip { overflow: hidden; }
+.drawer-inner { padding: 22px 20px; perspective: 1200px; }
+.drawer-panel .proj-grid { perspective: none; }
 
 /* marquee */
 .marquee {
@@ -807,14 +872,14 @@ section { padding: clamp(80px, 12vh, 140px) clamp(20px, 6vw, 72px); }
   overflow: hidden;
   will-change: transform;
 }
-.proj-card:hover { border-color: rgba(57,135,229,0.45); }
+.proj-card:hover { border-color: rgba(212,212,216,0.45); }
 .proj-card .glare {
   position: absolute;
   inset: 0;
   pointer-events: none;
   opacity: 0;
   transition: opacity .3s;
-  background: radial-gradient(420px circle at var(--gx,50%) var(--gy,50%), rgba(120,160,255,0.13), transparent 60%);
+  background: radial-gradient(420px circle at var(--gx,50%) var(--gy,50%), rgba(255,255,255,0.10), transparent 60%);
 }
 .proj-card:hover .glare { opacity: 1; }
 .proj-top {
@@ -830,7 +895,7 @@ section { padding: clamp(80px, 12vh, 140px) clamp(20px, 6vw, 72px); }
   place-items: center;
   font-size: 1.15rem;
   color: #fff;
-  background: linear-gradient(135deg, rgba(57,135,229,0.28), rgba(144,133,233,0.28));
+  background: linear-gradient(135deg, rgba(212,212,216,0.28), rgba(161,161,170,0.28));
   border: 1px solid var(--border-2);
 }
 .badge {
@@ -853,7 +918,7 @@ section { padding: clamp(80px, 12vh, 140px) clamp(20px, 6vw, 72px); }
 }
 .badge-open   { color: #34d399; border-color: rgba(52,211,153,0.35); background: rgba(52,211,153,0.08); }
 .badge-open::before { animation: pulse 1.8s ease infinite; }
-.badge-active { color: var(--cyan); border-color: rgba(76,194,232,0.35); background: rgba(76,194,232,0.08); }
+.badge-active { color: var(--cyan); border-color: rgba(255,255,255,0.35); background: rgba(255,255,255,0.08); }
 .badge-active::before { animation: pulse 1.8s ease infinite; }
 .badge-wip    { color: #fbbf24; border-color: rgba(251,191,36,0.35); background: rgba(251,191,36,0.08); }
 .badge-past   { color: var(--muted); border-color: var(--border-2); background: var(--panel); }
@@ -973,7 +1038,7 @@ section { padding: clamp(80px, 12vh, 140px) clamp(20px, 6vw, 72px); }
 }
 .soc:hover {
   color: #fff;
-  border-color: rgba(76,194,232,0.5);
+  border-color: rgba(255,255,255,0.5);
   background: var(--panel-2);
 }
 .soc img {
@@ -988,7 +1053,7 @@ section { padding: clamp(80px, 12vh, 140px) clamp(20px, 6vw, 72px); }
   bottom: calc(100% + 10px);
   left: 50%;
   transform: translateX(-50%) translateY(4px);
-  background: #0c1220;
+  background: #111114;
   border: 1px solid var(--border-2);
   color: var(--ink);
   font-family: var(--font-mono);
@@ -1001,6 +1066,110 @@ section { padding: clamp(80px, 12vh, 140px) clamp(20px, 6vw, 72px); }
   transition: opacity .2s, transform .2s;
 }
 .soc[data-tip]:hover::after { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ---- security ---- */
+#security { position: relative; overflow: hidden; }
+#security::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, rgba(52,211,153,0.035) 0 1px, transparent 1px 3px);
+  mask-image: radial-gradient(ellipse at center, #000 30%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 78%);
+}
+#security .sec-title em { color: var(--acc); background: none; -webkit-text-fill-color: currentColor; }
+.sec-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(24px, 4vw, 48px);
+  align-items: stretch;
+}
+.recon {
+  background: #050506;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  font-family: var(--font-mono);
+  box-shadow: 0 20px 60px -30px #000, inset 0 0 60px -40px var(--acc);
+}
+.recon-bar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.02);
+  border-bottom: 1px solid var(--border);
+}
+.recon-bar i { width: 11px; height: 11px; border-radius: 50%; }
+.recon-bar i:nth-child(1) { background: #ff5f57; }
+.recon-bar i:nth-child(2) { background: #febc2e; }
+.recon-bar i:nth-child(3) { background: #28c840; }
+.recon-bar span { margin-left: 8px; color: var(--muted); font-size: 0.68rem; }
+.recon-body { padding: 18px; font-size: 0.82rem; line-height: 1.85; }
+.recon-body .l { display: block; white-space: pre-wrap; word-break: break-word; }
+.recon-body .pr { color: var(--acc); }
+.recon-body .dim { color: var(--muted); }
+.recon-body .ok { color: var(--acc); }
+.recon-body .out { color: var(--ink-2); }
+.recon-body .dec { color: var(--ink); }
+.recon-caret {
+  display: inline-block;
+  width: 8px; height: 14px;
+  background: var(--acc);
+  vertical-align: -2px;
+  animation: blink .9s step-end infinite;
+}
+.nullsec {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 16px;
+  padding: 30px 22px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(52,211,153,0.10), transparent 60%),
+    var(--panel);
+}
+.nullsec-logo {
+  width: 130px; height: 130px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 18px rgba(52,211,153,0.35));
+  animation: floaty 5s ease-in-out infinite;
+}
+@keyframes floaty { 50% { transform: translateY(-8px); } }
+.nullsec-tag {
+  font-family: var(--font-mono);
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+}
+.nullsec-tag b { color: var(--acc); font-weight: 700; }
+.nullsec-sub { font-size: 0.8rem; color: var(--muted); max-width: 32ch; }
+.focus-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 4px;
+}
+.focus {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--ink-2);
+  border: 1px solid var(--border-2);
+  padding: 5px 11px;
+  border-radius: 20px;
+  transition: color .25s, border-color .25s, background .25s;
+}
+.focus:hover { color: var(--acc); border-color: var(--acc); background: var(--acc-dim); }
+@media (max-width: 820px) {
+  .sec-grid { grid-template-columns: 1fr; }
+}
 
 /* ---- footer ---- */
 footer {
@@ -1072,7 +1241,7 @@ footer a:hover { color: var(--cyan); }
   <ul class="nav-links">
     <li><a href="#about"><span class="n">01</span>about</a></li>
     <li><a href="#skills"><span class="n">02</span>skills</a></li>
-    <li><a href="#projects"><span class="n">03</span>projects</a></li>
+    <li><a href="#security"><span class="n">03</span>security</a></li>
     <li><a href="#contact"><span class="n">04</span>contact</a></li>
   </ul>
 </nav>
@@ -1092,8 +1261,8 @@ footer a:hover { color: var(--cyan); }
           <span class="ed-tab active"><span class="ic ic-ts">TS</span>eli.config.ts</span>
           <a class="ed-tab" href="#about"><span class="ic ic-md">MD</span>about.md</a>
           <a class="ed-tab" href="#skills"><span class="ic ic-js">{}</span>skills.json</a>
-          <a class="ed-tab" href="#projects"><span class="ic ic-tsx">&lt;/&gt;</span>projects.tsx</a>
-          <a class="ed-tab" href="#contact"><span class="ic ic-sh">$_</span>contact.sh</a>
+          <a class="ed-tab" href="#security"><span class="ic ic-sh">$_</span>recon.sh</a>
+          <a class="ed-tab" href="#contact"><span class="ic ic-md">MD</span>contact.md</a>
         </div>
         <div class="ed-main">
           <div class="ed-activity" aria-hidden="true">
@@ -1139,15 +1308,12 @@ footer a:hover { color: var(--cyan); }
         </div>
       </div>
       <div class="about-text">
-        <p data-reveal style="--d:.08s">
-          <span class="hl">17yo developer</span> &amp; video games enjoyer.
-          I build things for the web, write Discord bots and script game
-          logic — and right now I'm turning that into
-          <span class="hl">my own business</span>.
+        <p class="about-lead" data-reveal style="--d:.08s">
+          I build things — then I <span class="hl">break</span> them.
         </p>
         <p data-reveal style="--d:.16s">
-          Always looking for new challenges and opportunities to improve.
-          Feel free to reach out if you're interested in <span class="hl">collaborating</span>!
+          17, self-taught, going self-employed. Web, Discord bots &amp; Luau by
+          trade — interested in <span class="hl">cybersecurity</span> &amp; OSINT.
         </p>
 
         <div class="stat-row">
@@ -1193,7 +1359,7 @@ footer a:hover { color: var(--cyan); }
             <svg width="110" height="110" viewBox="0 0 110 110">
               <defs>
                 <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="#3987e5"/><stop offset="1" stop-color="#9085e9"/>
+                  <stop offset="0" stop-color="#d4d4d8"/><stop offset="1" stop-color="#a1a1aa"/>
                 </linearGradient>
               </defs>
               <circle class="ring-track" cx="55" cy="55" r="48"/>
@@ -1240,6 +1406,81 @@ footer a:hover { color: var(--cyan); }
       </div>
     </div>
 
+    <div class="proj-drawer" data-reveal>
+      <button class="drawer-head" id="projToggle" aria-expanded="false" aria-controls="projPanel">
+        <span class="dh-left"><span class="pr">&gt;</span> <i class="fas fa-folder"></i> projects <span class="dh-count">05</span></span>
+        <span class="dh-chevron"><i class="fas fa-chevron-down"></i></span>
+      </button>
+      <div class="drawer-panel" id="projPanel" role="region" aria-label="Projects">
+        <div class="drawer-clip">
+          <div class="drawer-inner">
+            <div class="proj-grid">
+              <div class="proj-card" data-tilt>
+                <div class="glare"></div>
+                <div class="proj-top">
+                  <div class="proj-icon"><i class="fas fa-code"></i></div>
+                  <span class="badge badge-open">open</span>
+                </div>
+                <h3 class="proj-name">Web Commissions</h3>
+                <p class="proj-desc">I build complex, custom websites — from landing pages to full-on interactive experiences. DM me on Discord for commissions.</p>
+                <div class="proj-tags"><span class="tag">html</span><span class="tag">css</span><span class="tag">js</span></div>
+              </div>
+
+              <a class="proj-card" href="https://kurai-site-web.vercel.app/" target="_blank" rel="noopener" data-tilt>
+                <div class="glare"></div>
+                <div class="proj-top">
+                  <div class="proj-icon"><i class="fas fa-users"></i></div>
+                  <span class="badge badge-active">active</span>
+                </div>
+                <h3 class="proj-name">Team Kurai <i class="fas fa-arrow-up-right-from-square"></i></h3>
+                <p class="proj-desc">Website developer for Team Kurai — building and maintaining the team's web presence.</p>
+                <div class="proj-tags"><span class="tag">frontend</span><span class="tag">vercel</span></div>
+              </a>
+
+              <div class="proj-card" data-tilt>
+                <div class="glare"></div>
+                <div class="proj-top">
+                  <div class="proj-icon"><i class="fas fa-cube"></i></div>
+                  <span class="badge badge-wip">in progress</span>
+                </div>
+                <h3 class="proj-name">Roblox Tycoon</h3>
+                <p class="proj-desc">An upcoming Roblox tycoon game built in Luau. It's gonna be an absolute banger — stay tuned!</p>
+                <div class="proj-tags"><span class="tag">luau</span><span class="tag">roblox studio</span></div>
+              </div>
+
+              <div class="proj-card" data-tilt>
+                <div class="glare"></div>
+                <div class="proj-top">
+                  <div class="proj-icon"><i class="fab fa-discord"></i></div>
+                  <span class="badge badge-past">past</span>
+                </div>
+                <h3 class="proj-name">Cordify</h3>
+                <p class="proj-desc">Years of experience building Discord bots with discord.py. Proficient in all the good stuff.</p>
+                <div class="proj-tags"><span class="tag">python</span><span class="tag">discord.py</span></div>
+              </div>
+
+              <div class="proj-card" data-tilt>
+                <div class="glare"></div>
+                <div class="proj-top">
+                  <div class="proj-icon"><i class="fas fa-server"></i></div>
+                  <span class="badge badge-past">past</span>
+                </div>
+                <h3 class="proj-name">Project Astral</h3>
+                <p class="proj-desc">OGFN hosting &amp; game server building — gained deep experience in server infrastructure.</p>
+                <div class="proj-tags"><span class="tag">hosting</span><span class="tag">infra</span></div>
+              </div>
+            </div>
+
+            <div class="gh-cta">
+              <a href="https://github.com/el1sc" target="_blank" rel="noopener" class="btn btn-ghost" data-magnet>
+                <i class="fab fa-github"></i> github.com/el1sc
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="marquee" data-reveal aria-hidden="true">
       <div class="marquee-track" id="mqTrack">
         <span class="mq-item"><i class="fab fa-python"></i>python</span>
@@ -1252,80 +1493,50 @@ footer a:hover { color: var(--cyan); }
         <span class="mq-item"><i class="fab fa-git-alt"></i>git</span>
         <span class="mq-item"><i class="fas fa-cube"></i>roblox studio</span>
         <span class="mq-item"><i class="fas fa-server"></i>game servers</span>
+        <span class="mq-item"><i class="fas fa-shield-halved"></i>cybersecurity</span>
+        <span class="mq-item"><i class="fas fa-terminal"></i>linux</span>
+        <span class="mq-item"><i class="fas fa-user-secret"></i>osint</span>
+        <span class="mq-item"><i class="fas fa-lock"></i>privacy</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- projects -->
-<section id="projects">
+<!-- security -->
+<section id="security">
   <div class="wrap">
     <div class="sec-head" data-reveal>
-      <p class="sec-tag">03 // projects</p>
-      <h2 class="sec-title">My <em>projects</em></h2>
+      <p class="sec-tag">03 // recon</p>
+      <h2 class="sec-title">Security &amp; <em>#nullsec</em></h2>
     </div>
 
-    <div class="proj-grid">
-      <div class="proj-card" data-tilt data-reveal>
-        <div class="glare"></div>
-        <div class="proj-top">
-          <div class="proj-icon"><i class="fas fa-code"></i></div>
-          <span class="badge badge-open">open</span>
+    <div class="sec-grid">
+      <div class="recon" data-reveal>
+        <div class="recon-bar"><i></i><i></i><i></i><span>root@nullsec: ~/recon</span></div>
+        <div class="recon-body" id="recon">
+          <span class="l"><span class="pr">$</span> <span class="out">whoami --interests</span></span>
+          <span class="l"><span class="dec" data-decrypt="cybersecurity · reverse engineering · osint · ctf">cybersecurity · reverse engineering · osint · ctf</span></span>
+          <span class="l">&nbsp;</span>
+          <span class="l"><span class="pr">$</span> <span class="out">cat mindset.txt</span></span>
+          <span class="l"><span class="dec" data-decrypt="to secure it, first understand how it breaks.">to secure it, first understand how it breaks.</span></span>
+          <span class="l">&nbsp;</span>
+          <span class="l"><span class="pr">$</span> <span class="out">./scan --status</span></span>
+          <span class="l"><span class="ok">[ok]</span> <span class="out">always learning</span> <span class="recon-caret"></span></span>
         </div>
-        <h3 class="proj-name">Web Commissions</h3>
-        <p class="proj-desc">I build complex, custom websites — from landing pages to full-on interactive experiences. DM me on Discord for commissions.</p>
-        <div class="proj-tags"><span class="tag">html</span><span class="tag">css</span><span class="tag">js</span></div>
       </div>
 
-      <a class="proj-card" href="https://kurai-site-web.vercel.app/" target="_blank" rel="noopener" data-tilt data-reveal style="--d:.08s">
-        <div class="glare"></div>
-        <div class="proj-top">
-          <div class="proj-icon"><i class="fas fa-users"></i></div>
-          <span class="badge badge-active">active</span>
+      <div class="nullsec" data-reveal style="--d:.1s">
+        <img class="nullsec-logo" src="nullsec.png" alt="nullsec logo">
+        <div class="nullsec-tag">#<b>nullsec</b></div>
+        <p class="nullsec-sub">Anti-chat-control collective — fighting for digital privacy &amp; against mass surveillance.</p>
+        <div class="focus-row">
+          <span class="focus">web exploitation</span>
+          <span class="focus">reversing</span>
+          <span class="focus">osint</span>
+          <span class="focus">privacy</span>
+          <span class="focus">ctf</span>
         </div>
-        <h3 class="proj-name">Team Kurai <i class="fas fa-arrow-up-right-from-square"></i></h3>
-        <p class="proj-desc">Website developer for Team Kurai — building and maintaining the team's web presence.</p>
-        <div class="proj-tags"><span class="tag">frontend</span><span class="tag">vercel</span></div>
-      </a>
-
-      <div class="proj-card" data-tilt data-reveal style="--d:.16s">
-        <div class="glare"></div>
-        <div class="proj-top">
-          <div class="proj-icon"><i class="fas fa-cube"></i></div>
-          <span class="badge badge-wip">in progress</span>
-        </div>
-        <h3 class="proj-name">Roblox Tycoon</h3>
-        <p class="proj-desc">An upcoming Roblox tycoon game built in Luau. It's gonna be an absolute banger — stay tuned!</p>
-        <div class="proj-tags"><span class="tag">luau</span><span class="tag">roblox studio</span></div>
       </div>
-
-      <div class="proj-card" data-tilt data-reveal style="--d:.24s">
-        <div class="glare"></div>
-        <div class="proj-top">
-          <div class="proj-icon"><i class="fab fa-discord"></i></div>
-          <span class="badge badge-past">past</span>
-        </div>
-        <h3 class="proj-name">Cordify</h3>
-        <p class="proj-desc">Years of experience building Discord bots with discord.py. Proficient in all the good stuff.</p>
-        <div class="proj-tags"><span class="tag">python</span><span class="tag">discord.py</span></div>
-      </div>
-
-      <div class="proj-card" data-tilt data-reveal style="--d:.32s">
-        <div class="glare"></div>
-        <div class="proj-top">
-          <div class="proj-icon"><i class="fas fa-server"></i></div>
-          <span class="badge badge-past">past</span>
-        </div>
-        <h3 class="proj-name">Project Astral</h3>
-        <p class="proj-desc">OGFN hosting &amp; game server building — gained deep experience in server infrastructure.</p>
-        <div class="proj-tags"><span class="tag">hosting</span><span class="tag">infra</span></div>
-      </div>
-    </div>
-
-    <div class="gh-cta" data-reveal>
-      <a href="https://github.com/el1sc" target="_blank" rel="noopener" class="btn btn-ghost" data-magnet>
-        <i class="fab fa-github"></i> github.com/el1sc
-      </a>
     </div>
   </div>
 </section>
@@ -1365,7 +1576,7 @@ footer a:hover { color: var(--cyan); }
 
 <!-- footer -->
 <footer>
-  <span>© <span id="year"></span> eli — designed &amp; built from scratch</span>
+  <span>© <span id="year"></span> eli — built from scratch · #nullsec</span>
   <a href="#hero">back to top ↑</a>
 </footer>
 
@@ -1477,14 +1688,14 @@ window.addEventListener('load', () => {
     for (const [i, j] of edges) {
       const a = proj[i], b = proj[j];
       const alpha = Math.max(0, ((a[2] + b[2]) / 2 - 0.72) * 0.9) * dim;
-      ctx.strokeStyle = `rgba(100,135,230,${alpha})`;
+      ctx.strokeStyle = `rgba(200,200,205,${alpha})`;
       ctx.beginPath();
       ctx.moveTo(a[0], a[1]);
       ctx.lineTo(b[0], b[1]);
       ctx.stroke();
     }
     for (const p of proj) {
-      ctx.fillStyle = `rgba(110,205,235,${Math.max(0.1, (p[2] - 0.72) * 1.1) * dim})`;
+      ctx.fillStyle = `rgba(255,255,255,${Math.max(0.1, (p[2] - 0.72) * 1.1) * dim})`;
       ctx.beginPath();
       ctx.arc(p[0], p[1], 2 * p[2], 0, Math.PI * 2);
       ctx.fill();
@@ -1504,7 +1715,7 @@ window.addEventListener('load', () => {
     for (const s of stars) {
       s.y -= s.v;
       if (s.y < -4) { s.y = H + 4; s.x = Math.random() * W; }
-      ctx.fillStyle = `rgba(150,180,235,${s.a})`;
+      ctx.fillStyle = `rgba(180,180,185,${s.a})`;
       ctx.fillRect(s.x + smx * 8 * s.r, s.y + smy * 8 * s.r, s.r, s.r);
     }
 
@@ -1545,7 +1756,8 @@ window.addEventListener('load', () => {
     [['u','  '],['p','age'],['u',': '],['n','17'],['u',',']],
     [['u','  '],['p','role'],['u',': '],['s','"hobby developer"'],['u',',']],
     [['u','  '],['p','stack'],['u',': ['],['s','"python"'],['u',', '],['s','"js"'],['u',', '],['s','"html"'],['u',', '],['s','"css"'],['u',', '],['s','"c++"'],['u',', '],['s','"luau"'],['u','],']],
-    [['u','  '],['p','passion'],['u',': '],['s','"building new things"'],['u',',']],
+    [['u','  '],['p','passion'],['u',': '],['s','"building & breaking things"'],['u',',']],
+    [['u','  '],['p','interests'],['u',': ['],['s','"cybersecurity"'],['u',', '],['s','"reversing"'],['u',', '],['s','"osint"'],['u','],']],
     [['u','  '],['p','currently'],['u',': '],['s','"working on a roblox tycoon"'],['u',',']],
     [['u','} '],['k','as'],['u',' '],['t','const'],['u',';']],
     [],
@@ -1590,7 +1802,7 @@ window.addEventListener('load', () => {
       }
       mapBar(toks);
     });
-    pos.textContent = 'Ln 12, Col 20';
+    pos.textContent = 'Ln 13, Col 20';
     return;
   }
 
@@ -1829,6 +2041,18 @@ window.addEventListener('load', () => {
   });
 })();
 
+/* ---- projects drawer toggle ---- */
+(() => {
+  const btn = document.getElementById('projToggle');
+  const panel = document.getElementById('projPanel');
+  if (!btn || !panel) return;
+  btn.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    panel.classList.toggle('open', !open);
+  });
+})();
+
 /* ---- marquee (duplicate track for seamless loop) ---- */
 (() => {
   const track = document.getElementById('mqTrack');
@@ -1900,12 +2124,42 @@ window.addEventListener('load', () => {
   }
 })();
 
+/* ---- decrypt effect (security section) ---- */
+(() => {
+  const GLYPHS = '!<>-_\\/[]{}—=+*^?#01abcdef';
+  const rand = s => GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
+  document.querySelectorAll('[data-decrypt]').forEach(el => {
+    const target = el.dataset.decrypt;
+    const io = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return;
+      io.disconnect();
+      if (REDUCED) { el.textContent = target; return; }
+      let frame = 0;
+      const total = target.length * 3 + 20;
+      (function run() {
+        let out = '';
+        for (let i = 0; i < target.length; i++) {
+          const reveal = i * 3;
+          if (frame >= reveal + 8) out += target[i];
+          else if (frame >= reveal) out += rand();
+          else out += target[i] === ' ' ? ' ' : rand();
+        }
+        el.textContent = out;
+        frame++;
+        if (frame <= total) requestAnimationFrame(run);
+        else el.textContent = target;
+      })();
+    }, { threshold: 0.5 });
+    io.observe(el);
+  });
+})();
+
 /* ---- misc ---- */
 document.getElementById('year').textContent = new Date().getFullYear();
 
 console.log(
   '%c⚡ eli.dev %c\nsup. you found the console.\nDM me on discord: eliyc',
-  'font-size:20px;font-weight:bold;background:linear-gradient(90deg,#3987e5,#9085e9,#4cc2e8);color:#fff;padding:6px 14px;border-radius:8px;',
+  'font-size:20px;font-weight:bold;background:linear-gradient(90deg,#d4d4d8,#a1a1aa,#ffffff);color:#fff;padding:6px 14px;border-radius:8px;',
   'color:#8b93a6;font-size:12px;'
 );
 </script>
