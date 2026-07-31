@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Eli — Developer & Security</title>
-<meta name="description" content="Eli — 17yo developer going self-employed. Websites, Discord bots, Luau, and cybersecurity. #nullsec">
+<meta name="description" content="Eli — 17yo developer going self-employed. Websites, Discord bots, Luau, and cybersecurity.">
 <meta name="theme-color" content="#000000">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1081,7 +1081,7 @@ section { padding: clamp(80px, 12vh, 140px) clamp(20px, 6vw, 72px); }
 #security .sec-title em { color: var(--acc); background: none; -webkit-text-fill-color: currentColor; }
 .sec-grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1fr;
   gap: clamp(24px, 4vw, 48px);
   align-items: stretch;
 }
@@ -1119,56 +1119,6 @@ section { padding: clamp(80px, 12vh, 140px) clamp(20px, 6vw, 72px); }
   background: var(--acc);
   vertical-align: -2px;
   animation: blink .9s step-end infinite;
-}
-.nullsec {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 16px;
-  padding: 30px 22px;
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  background:
-    radial-gradient(circle at 50% 40%, rgba(52,211,153,0.10), transparent 60%),
-    var(--panel);
-}
-.nullsec-logo {
-  width: 130px; height: 130px;
-  object-fit: contain;
-  filter: drop-shadow(0 0 18px rgba(52,211,153,0.35));
-  animation: floaty 5s ease-in-out infinite;
-}
-@keyframes floaty { 50% { transform: translateY(-8px); } }
-.nullsec-tag {
-  font-family: var(--font-mono);
-  font-size: 1.4rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  color: var(--ink);
-}
-.nullsec-tag b { color: var(--acc); font-weight: 700; }
-.nullsec-sub { font-size: 0.8rem; color: var(--muted); max-width: 32ch; }
-.focus-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  justify-content: center;
-  margin-top: 4px;
-}
-.focus {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  color: var(--ink-2);
-  border: 1px solid var(--border-2);
-  padding: 5px 11px;
-  border-radius: 20px;
-  transition: color .25s, border-color .25s, background .25s;
-}
-.focus:hover { color: var(--acc); border-color: var(--acc); background: var(--acc-dim); }
-@media (max-width: 820px) {
-  .sec-grid { grid-template-columns: 1fr; }
 }
 
 /* ---- footer ---- */
@@ -1507,12 +1457,12 @@ footer a:hover { color: var(--cyan); }
   <div class="wrap">
     <div class="sec-head" data-reveal>
       <p class="sec-tag">03 // recon</p>
-      <h2 class="sec-title">Security &amp; <em>#nullsec</em></h2>
+      <h2 class="sec-title">Security &amp; <em>research</em></h2>
     </div>
 
     <div class="sec-grid">
       <div class="recon" data-reveal>
-        <div class="recon-bar"><i></i><i></i><i></i><span>root@nullsec: ~/recon</span></div>
+        <div class="recon-bar"><i></i><i></i><i></i><span>root@eli: ~/recon</span></div>
         <div class="recon-body" id="recon">
           <span class="l"><span class="pr">$</span> <span class="out">whoami --interests</span></span>
           <span class="l"><span class="dec" data-decrypt="cybersecurity · reverse engineering · osint · ctf">cybersecurity · reverse engineering · osint · ctf</span></span>
@@ -1525,18 +1475,6 @@ footer a:hover { color: var(--cyan); }
         </div>
       </div>
 
-      <div class="nullsec" data-reveal style="--d:.1s">
-        <img class="nullsec-logo" src="nullsec.png" alt="nullsec logo">
-        <div class="nullsec-tag">#<b>nullsec</b></div>
-        <p class="nullsec-sub">Anti-chat-control collective — fighting for digital privacy &amp; against mass surveillance.</p>
-        <div class="focus-row">
-          <span class="focus">web exploitation</span>
-          <span class="focus">reversing</span>
-          <span class="focus">osint</span>
-          <span class="focus">privacy</span>
-          <span class="focus">ctf</span>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -1576,7 +1514,7 @@ footer a:hover { color: var(--cyan); }
 
 <!-- footer -->
 <footer>
-  <span>© <span id="year"></span> eli — built from scratch · #nullsec</span>
+  <span>© <span id="year"></span> eli — built from scratch</span>
   <a href="#hero">back to top ↑</a>
 </footer>
 
